@@ -1,0 +1,24 @@
+{
+  "name": "trabalho-conclusao-ci",
+  "version": "1.0.0",
+  "description": "1. Instale o [git](https://git-scm.com)\r 2. Instale o [nodejs](https://nodejs.org/)\r 3. Instale o Yarn - `npm install -g yarn`\r 4. Faça um _Fork_ do projeto\r 5. Clone o repositório para sua máquina (seu fork)\r 6. Instale as dependências\r    ```shell\r    cd pgats-ci\r    yarn\r    ```\r 7. Execute os testes de unidade - isso vai gerar um relatório\r    ```shell\r    yarn run test\r    ```\r 8. Abra o relatório de cobertura de código em `reports/coverage/lcov-report`\r 9. Execute os testes de mutação com o Stryker\r    ```shell\r    yarn run test:mutation\r    ```\r 10. Abra o relatório de mutação em `reports/mutation`\r 11. Instale os navegadores do Playwright\r     ```shell\r     yarn playwright install\r     ```\r 12. Execute os testes end-to-end com o Playwright\r     ```shell\r     yarn run e2e\r     ```\r 13. Execute a aplicação com `yarn start`\r 14. Acesse a aplicação publicada [neste link](https://pgats-ci-example.netlify.app)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pattyd08/trabalho-conclusao-ci.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Pattyd08/trabalho-conclusao-ci/issues"
+  },
+  "homepage": "https://github.com/Pattyd08/trabalho-conclusao-ci#readme",
+  "dependencies": {
+    "mocha": "^11.7.6"
+  }
+}
