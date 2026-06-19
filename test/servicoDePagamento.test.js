@@ -1,29 +1,29 @@
+import { test, expect } from '@playwright/test';
 import ServicoDePagamento from '../src/servicoDePagamento.js';
-import assert from 'node:assert';
 
-describe('Classe de Serviço de Pagamento', () => {
+test.describe('Classe de Serviço de Pagamento', () => {
 
-  it('Validar que o pagamento é adicionado na lista de pagamentos', function() {
+  test('Validar que o pagamento é adicionado na lista de pagamentos', async () => {
     const servicoDePagamento = new ServicoDePagamento();
 
     servicoDePagamento.pagar('0987-7656-3475', 'Samar', 156.87);
     const ultimoPagamento = servicoDePagamento.consultarUltimoPagamento();
 
-    assert.equal(ultimoPagamento.codigoBarras, '0987-7656-3475');
-    assert.equal(ultimoPagamento.empresa, 'Samar');
-    assert.equal(ultimoPagamento.valor, 156.87);
+    expect(ultimoPagamento.codigoBarras).toBe('0987-7656-3475');
+    expect(ultimoPagamento.empresa).toBe('Samar');
+    expect(ultimoPagamento.valor).toBe(156.87);
   });
 
-  it('Validar que pagamento com valor acima de 100.00 recebe categoria "cara"', function() {
+  test('Validar que pagamento com valor acima de 100.00 recebe categoria "cara"', async () => {
     const servicoDePagamento = new ServicoDePagamento();
 
     servicoDePagamento.pagar('0987-7656-3475', 'Samar', 156.87);
     const ultimoPagamento = servicoDePagamento.consultarUltimoPagamento();
 
-    assert.equal(ultimoPagamento.categoria, 'cara');
+    expect(ultimoPagamento.categoria).toBe('cara');
   });
 
-  it('Validar que pagamento com valor igual ou abaixo de 100.00 recebe categoria "padrão"', function() {
+  test('Validar que pagamento com valor igual ou abaixo de 100.00 recebe categoria "padrão"', async () => {
     // Arrange
     const servicoDePagamento = new ServicoDePagamento();
 
@@ -32,10 +32,10 @@ describe('Classe de Serviço de Pagamento', () => {
     const ultimoPagamento = servicoDePagamento.consultarUltimoPagamento();
 
     // Assert
-    assert.equal(ultimoPagamento.categoria, 'padrão');
+    expect(ultimoPagamento.categoria).toBe( 'padrão');
   });
 
-  it('Validar que consultarUltimoPagamento retorna apenas o último pagamento', function() {
+  test('Validar que consultarUltimoPagamento retorna apenas o último pagamento', async () => {
     // Arrange
     const servicoDePagamento = new ServicoDePagamento();
 
@@ -45,10 +45,10 @@ describe('Classe de Serviço de Pagamento', () => {
     const ultimoPagamento = servicoDePagamento.consultarUltimoPagamento();
 
     // Assert
-    assert.equal(ultimoPagamento.codigoBarras, '4444-5555-6666');
-    assert.equal(ultimoPagamento.empresa, 'Empresa B');
-    assert.equal(ultimoPagamento.valor, 200.00);
-    assert.equal(ultimoPagamento.categoria, 'cara');
+    expect(ultimoPagamento.codigoBarras).toBe('4444-5555-6666');
+    expect(ultimoPagamento.empresa).toBe('Empresa B');
+    expect(ultimoPagamento.valor).toBe(200.00);
+    expect(ultimoPagamento.categoria).toBe('cara');
   });
 
 });
