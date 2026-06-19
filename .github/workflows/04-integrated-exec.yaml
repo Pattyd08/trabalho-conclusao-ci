@@ -58,6 +58,9 @@ jobs:
       - name: Instalando dependências
         run: yarn
 
+      - name: Instalando Browsers do Playwright
+        run: npx playwright install --with-deps
+
       - name: Rodando testes unitários
         run: yarn run test
 
