@@ -1,13 +1,21 @@
-# CI de Nível 01 - Disparo Manual através de clique
-
-# nome da pipeline
-name: '01 - Execução Manual'
+name: '02 - Execução Agendada'
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
+# gatilho agendado = schedule
 
 on:
   workflow_dispatch:
+
+  schedule:
+    # cronograma de execução
+    # 1 - minuto, 2 - hora, 3 dia do mês, 4 - mês, 5 - dia da semana
+
+    #Roda a cada 30 minutos
+    - cron: '*/30 * * * *'
+
+    #Roda toda sexta-feira à meia noite
+    - cron: '0 0 * * 5'
 
 #tarefas dentro da pipeline = jobs
 
@@ -33,11 +41,11 @@ jobs:
 
       #   instalação das dependências
       - name: Instalando dependências
-        run: yarn install
+        run: yarn
 
       # instalação dos Browsers do Playwright
       - name: Instalando Browsers do Playwright
-        run: yarn playwright install --with-deps
+        run: yarn playwright install
 
       # executar os testes e2e
       - name: Executando testes e2e
