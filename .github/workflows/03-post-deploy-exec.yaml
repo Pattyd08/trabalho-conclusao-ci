@@ -1,21 +1,16 @@
-name: '02 - Execução Agendada'
+# nome da pipeline
+name: 'N3 -Execução por Deploy'
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
 # gatilho agendado = schedule
+# gatilho por conclusão de outra pipeline = workflow_run
 
 on:
-  workflow_dispatch:
-
-  schedule:
-    # cronograma de execução
-    # 1 - minuto, 2 - hora, 3 dia do mês, 4 - mês, 5 - dia da semana
-
-    #Roda a cada 30 minutos
-    - cron: '*/30 * * * *'
-
-    #Roda toda sexta-feira à meia noite
-    - cron: '0 0 * * 5'
+  workflow_run:
+    workflows: ['01 - Execução Manual', '02 - Execução Agendada']
+    types:
+      - completed
 
 #tarefas dentro da pipeline = jobs
 
@@ -24,6 +19,8 @@ jobs:
   e2e-tests:
     # maquina onde o job vai rodar
     runs-on: ubuntu-latest
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     # passos do job
     steps:
