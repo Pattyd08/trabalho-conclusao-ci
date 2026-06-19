@@ -20,10 +20,10 @@ jobs:
     # passos do job
     steps:
       # clone do projeto
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       # instalção do node
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: 24.x
 
@@ -44,7 +44,7 @@ jobs:
         run: yarn run e2e
 
       - name: Salvando relatórios de testes
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         if: ${{ always() }}
         with:
           path: ./playwright-report
