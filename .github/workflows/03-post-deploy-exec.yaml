@@ -1,5 +1,5 @@
 # nome da pipeline
-name: 'N3 -Execução por Deploy'
+name: '03 -Execução por Deploy'
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
