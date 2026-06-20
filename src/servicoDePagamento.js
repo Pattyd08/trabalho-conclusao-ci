@@ -1,18 +1,20 @@
 export default class ServicoDePagamento {
-  #pagamentos // Propriedade Privada
+  #pagamentos; // Propriedade Privada
 
-  constructor() { // Primeiro método a ser executado quando usar a Classe
+  constructor() {
+    // Primeiro método a ser executado quando usar a Classe
     this.#pagamentos = [];
   }
 
-  pagar(codigoBarras, empresa, valor) { // Método
-    const categoria = valor > 100.00 ? 'cara' : 'padrão';
+  pagar(codigoBarras, empresa, valor) {
+    // Método
+    const categoria = valor > 100.0 ? "cara" : "padrão";
 
     this.#pagamentos.push({
       codigoBarras: codigoBarras,
       empresa: empresa,
       valor: valor,
-      categoria: categoria
+      categoria: categoria,
     });
   }
 
@@ -20,7 +22,6 @@ export default class ServicoDePagamento {
     return this.#pagamentos.at(-1);
   }
 }
-
 
 /*
 Crie uma classe que possua dois métodos: um para realizar pagamento e outro para consultar o último pagamento. 

@@ -1,5 +1,5 @@
 # nome da pipeline
-name: '03 - Execução por Deploy'
+name: "03 - Execução por Deploy"
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
@@ -8,7 +8,7 @@ name: '03 - Execução por Deploy'
 
 on:
   workflow_run:
-    workflows: ['01 - Execução Manual', '02 - Execução Agendada']
+    workflows: ["01 - Execução Manual", "02 - Execução Agendada"]
     types:
       - completed
 

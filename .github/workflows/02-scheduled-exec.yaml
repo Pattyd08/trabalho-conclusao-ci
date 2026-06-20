@@ -1,5 +1,5 @@
 #nome da pipeline
-name: '02 - Execução Agendada'
+name: "02 - Execução Agendada"
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
@@ -13,10 +13,10 @@ on:
     # 1 - minuto, 2 - hora, 3 dia do mês, 4 - mês, 5 - dia da semana
 
     #Roda a cada 30 minutos
-    - cron: '*/30 * * * *'
+    - cron: "*/30 * * * *"
 
     #Roda toda sexta-feira à meia noite
-    - cron: '0 0 * * 5'
+    - cron: "0 0 * * 5"
 
 #tarefas dentro da pipeline = jobs
 

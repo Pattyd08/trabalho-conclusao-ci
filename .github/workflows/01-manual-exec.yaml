@@ -1,11 +1,11 @@
 # CI de Nível 01 - Disparo Manual através de clique
 
 # nome da pipeline
-name: '01 - Execução Manual'
+name: "01 - Execução Manual"
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
-                                  
+
 on:
   workflow_dispatch:
 
@@ -20,12 +20,12 @@ jobs:
     # passos do job
     steps:
       # clone do projeto
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
       # instalção do node
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v4
         with:
-          node-version: 24.x
+          node-version: 22
 
       # instalação do Yarn
       - name: Instalando Yarn
@@ -44,7 +44,7 @@ jobs:
         run: yarn run e2e
 
       - name: Gerar Histórico do Allure Report
-        uses: simple-elf/allure-report-action@v1.9.0
+        uses: simple-elf/allure-report-action@1.9.0
         if: ${{ always() }}
         with:
           allure_results: allure-results

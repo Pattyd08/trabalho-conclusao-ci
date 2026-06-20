@@ -1,5 +1,4 @@
-
-name: '04 -Execução Integrada'
+name: "04 -Execução Integrada"
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
