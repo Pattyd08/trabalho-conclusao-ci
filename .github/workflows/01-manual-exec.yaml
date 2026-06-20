@@ -44,7 +44,7 @@ jobs:
         run: yarn run e2e
 
       - name: Gerar Histórico do Allure Report
-        uses: simple-elf/allure-report-action@1.9.0
+        uses: simple-elf/allure-report-action@master
         if: ${{ always() }}
         with:
           allure_results: allure-results
