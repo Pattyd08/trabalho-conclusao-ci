@@ -1,6 +1,6 @@
 Trabalho de Conclusão - Integração Contínua - CI 🚀
 
-Este repositório apresenta a automação e otimização de esteiras de Integração Contínua (CI) aplicadas a um projeto de testes automatizados , desenvolvidas para a conclusão da disciplina de pós-graduação.  
+Este repositório apresenta a automação e otimização de esteiras de Integração Contínua (CI) aplicadas a um projeto de testes automatizados, desenvolvidas para a conclusão da disciplina de CI da pós-graduação.  
 
 🛠️ Ferramentas Utilizadas:
 - Runtime: Node.js (versão fixa 22 LTS) para garantir a padronização do ambiente.  
