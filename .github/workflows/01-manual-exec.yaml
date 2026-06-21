@@ -48,7 +48,8 @@ jobs:
       - name: Executando testes e2e
         run: yarn run e2e
 
-      # 1. Este passo baixa o histórico anterior para manter os gráficos de evolução
+      # Relatorios
+      # 1. Baixa o histórico anterior para manter os gráficos de evolução
       - name: Coletar histórico do Allure
         uses: actions/checkout@v4
         if: ${{ always() }}
@@ -57,21 +58,22 @@ jobs:
           ref: gh-pages
           path: gh-pages-dir
 
-      # 2. Este passo junta os testes novos com o histórico e monta a página web
+      # 2. Gera o relatório consolidando os resultados na pasta 'allure-report'
       - name: Gerar Allure Report com Histórico
         uses: simple-elf/allure-report-action@master
         if: ${{ always() }}
         with:
           allure_results: allure-results
           allure_report: allure-report
-          allure_history: allure-history/manual
+          allure_history: manual # <-- Nome limpo da pasta!
           keep_reports: 20
 
-      # 3. Este passo publica a página web gerada no GitHub Pages do seu repositório
+      # 3. Publica a pasta raiz gerada (allure-report) para dentro da subpasta no GitHub Pages
       - name: Publicar relatório no GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ always() }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: allure-report # <-- Aponta para o report compilado
+          destination_dir: manual # <-- Força a gravação exata dentro desta pasta na nuvem
