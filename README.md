@@ -1,42 +1,34 @@
-# trabalho-conclusao-ci
+Trabalho de Conclusão - Integração Contínua - CI 🚀
 
-# PGATS - CI
+Este repositório apresenta a automação e otimização de esteiras de Integração Contínua (CI) aplicadas a um projeto de testes automatizados , desenvolvidas para a conclusão da disciplina de pós-graduação.  
 
-## Pré-requisitos
+🛠️ Ferramentas Utilizadas:
+- Runtime: Node.js (versão fixa 22 LTS) para garantir a padronização do ambiente.  
+- Gerenciador de Pacotes: Yarn para gerenciamento rápido de dependências.  
+- Framework de Testes: Playwright para execução automatizada multi-browser (Chromium, Firefox, WebKit).
+- CI/CD: GitHub Actions para orquestração declarativa das esteiras.  
+- Relatórios: Allure Report para dashboards visuais e gráficos dinâmicos de execução.  
 
-1. Instale o [git](https://git-scm.com)
-2. Instale o [nodejs](https://nodejs.org/)
-3. Instale o Yarn - `npm install -g yarn`
-4. Faça um _Fork_ do projeto
-5. Clone o repositório para sua máquina (seu fork)
-6. Instale as dependências
-   ```shell
-   cd pgats-ci
-   yarn
-   ```
-7. Execute os testes de unidade - isso vai gerar um relatório
-   ```shell
-   yarn run test
-   ```
-8. Abra o relatório de cobertura de código em `reports/coverage/lcov-report`
-9. Execute os testes de mutação com o Stryker
-   ```shell
-   yarn run test:mutation
-   ```
-10. Abra o relatório de mutação em `reports/mutation`
-11. Instale os navegadores do Playwright
-    ```shell
-    yarn playwright install
-    ```
-12. Execute os testes end-to-end com o Playwright
-    ```shell
-    yarn run e2e
-    ```
-13. Execute a aplicação com `yarn start`
-14. Acesse a aplicação publicada [neste link](https://pgats-ci-example.netlify.app)
+🏗️ Estrutura das Pipelines (Workflows)
+Foram criados 4 fluxos independentes para cobrir diferentes estratégias de maturidade no CI:  
 
----
+01 - Execução Manual (01-manual-exec.yaml): Disparado sob demanda pelo painel do GitHub
+02 - Execução Agendada (02-scheduled-exec.yaml): Executado automaticamente em períodos definidos via rotinas cron.
+03 - Execução Pós-Deploy (03-post-deploy-exec.yaml): Acionado automaticamente logo após uma publicação em ambiente para atuar como fumaça (smoke test).
+04 - Execução Integrada (04-integrated-exec.yaml): Disparado a cada push ou Pull Request, servindo como portão de qualidade (Quality Gate) antes da branch principal.
 
-💜⚡️
+🔄 Fluxo de Execução (Jobs & Steps)
+- Inspeção (Linting): Análise estática da qualidade e sintaxe do código.  
+- Setup: Inicialização da máquina (ubuntu-latest), download do código e instalação do Node, Yarn e dependências.  
+- Browsers: Instalação das dependências oficiais de execução do Playwright.
+- Testes Unitários: Execução rápida dos testes de unidade (fail fast).  
+- Testes End-to-End (E2E): Execução paralela dos cenários de interface.  
+- Deploy do Relatório: Coleta dos dados brutos e publicação automatizada no GitHub Pages.  
 
-# pgats-ci
+📊 Links dos Relatórios (GitHub Pages)
+Os painéis visuais do Allure foram isolados em subpastas para que cada workflow mantenha seu próprio histórico disponível na nuvem:
+
+💻 Execução Manual: https://pattyd08.github.io/trabalho-conclusao-ci/manual/
+⏰ Execução Agendada: https://pattyd08.github.io/trabalho-conclusao-ci/agendado/
+🚀 Pós-Deploy: https://pattyd08.github.io/trabalho-conclusao-ci/deploy/
+🔄 Execução Integrada: https://pattyd08.github.io/trabalho-conclusao-ci/integrado/
